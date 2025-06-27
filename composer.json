@@ -13,7 +13,9 @@
 	],
 	"require": {
 		"getkirby/composer-installer": "^1.1",
-		"php": ">=8.2.0"
+		"php": ">=8.2.0",
+		"sylvainjule/locator": "^2.0",
+		"hananils/kirby-colors": "^1.7"
 	},
 	"require-dev": {
 		"getkirby/cms": "^4"

@@ -1,0 +1,36 @@
+title:
+  de: Reisen
+  en: Journeys
+preset: page
+icon: 🛫
+
+sections:
+  fields:
+    type: fields
+    fields:
+      title:
+        label:
+          de: Titel
+          en: Title
+        type: text
+        required: true
+      intro:
+        label:
+          de: Einleitung
+          en: Introduction
+        type: textarea
+
+  drafts:
+    extends: sections/journey-list
+    label:
+      de: Entwürfe
+      en: Drafts
+    layout: list
+    status: draft
+
+  listed:
+    extends: sections/journey-list
+    label:
+      de: Veröffentlichte Reisen
+      en: Published Journeys
+    status: listed

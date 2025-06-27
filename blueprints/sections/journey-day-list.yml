@@ -1,0 +1,11 @@
+type: pages
+label:
+  de: Reisetage
+  en: Journey Days
+layout: cardlets
+template: journey-journal-day
+image:
+  query: page.coverImage()
+  ratio: 3/2
+  cover: true
+info: "{{ page.date }}"

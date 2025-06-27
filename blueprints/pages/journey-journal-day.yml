@@ -1,0 +1,138 @@
+title: Reisetag
+
+changeSlug: true
+changeTitle: true
+icon: ☀
+num: zero
+
+create:
+  slug: "{{ page.date.toDate('Y-m-d') }}-{{ page.title.slug }}"
+  fields:
+    - date
+status:
+  draft: Entwurf
+  listed: Publiziert
+
+columns:
+  content:
+    width: 2/3
+
+    sections:
+
+      fields:
+        type: fields
+        fields:
+          section:
+            label: Abschnitt
+            width: 1/2
+            type: select
+            options: query
+            query:
+              fetch: page.Sections
+              text: "{{ structureItem.title }}"
+              value: "{{ structureItem.id }}"
+            required: true
+
+          date:
+            label: Reisetag
+            width: 1/2
+            type: select
+            required: true
+            default: page.nextDateInJourney
+            options: query
+            query:
+              fetch: page.Dates
+          intro:
+            type: textarea
+            required: true
+            size: small
+            label: Kurzbeschreibung
+          text:
+            type: textarea
+            size: medium
+            label: Text
+      gallery:
+        type: files
+        label: Galerie
+        template: galleryimage
+        layout: list
+        multiple: true
+        info: "{{ file.filename }}"
+        query: page.images.filterBy('template', 'journeygalleryimage')
+  sidebar:
+    width: 1/3
+    sections:
+      cover:
+        type: files
+        label: Titelbild
+        layout: cards
+        info: "{{ file.dimensions }}"
+        template: cover
+        min: 1
+        max: 1
+      location:
+        type: fields
+        fields:
+          location:
+            label: Ort
+            type: locator
+            liststyle: table
+            marker: dark
+            language: 'de'
+            tiles: openstreetmap
+          locations:
+            label: Besuchte Orte
+            type: structure
+            columns:
+              title:
+                width: 1/4
+                align: left
+                mobile: true
+              location:
+                width: 2/4
+                align: left
+                mobile: true
+              type:
+                width: 1/4
+                align: left
+                mobile: true
+            fields:
+              title:
+                label: Ort
+                type: text
+                required: true
+              icon:
+                label: Icon
+                type: select
+                options:
+                  type: query
+                  query: site.locationicons.toStructure
+                  text: "{{ item.name }} ({{item.icon}})"
+                  value: "{{ item.icon }}"
+              location:
+                label: Street
+                type: locator
+                liststyle: table
+                marker: dark
+                language: 'de'
+                tiles: openstreetmap
+              description:
+                label: Beschreibung
+                type: textarea
+                size: small
+          gpsfile:
+            label: GPS-Datei
+            type: files
+            template: journeygpsfile
+            info: "{{ file.filename }}"
+            image: false
+            multiple: false
+            min: 0
+            max: 1
+
+  comments:
+    width: 1/1
+    sections:
+      komments:
+        extends: sections/komments
+

@@ -1,0 +1,12 @@
+type: pages
+label:
+  de: Reisen
+  en: Journeys
+parent: site.index.findBy('template', 'journey-journal-journeys').first
+template: journey-journal-journey
+layout: cards
+image:
+  query: page.coverImage
+  ratio: 3/2
+  cover: true
+info: "{{ page.year }}"

@@ -1,0 +1,35 @@
+title:
+  de: Reisejournal-Besucher
+  en: Journey Journal Visitors
+permissions:
+  access:
+    account: true
+    languages: false
+    panel: true
+    site: false
+    system: false
+    users: false
+  user:
+    changeEmail: true
+    changeLanguage: true
+    changeName: true
+    changePassword: true
+    changeRole: false
+    delete: false
+    update: true
+
+columns:
+  left:
+    width: 1/2
+    fields:
+      city:
+        label:
+          de: Stadt
+          en: City
+        type: text
+      country:
+        label:
+          de: Land
+          en: Country
+        type: text
+

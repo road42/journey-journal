@@ -1,0 +1,21 @@
+{
+	"name": "road42/journey-journal",
+	"description": "Kirby plugin dedicated to sharing journeys.",
+	"license": "MIT",
+	"type": "kirby-plugin",
+	"version": "0.0.1",
+	"authors": [
+		{
+			"name": "Christoph Jahn",
+			"email": "cj@road42.de"
+		}
+	],
+	"require": {
+		"getkirby/composer-installer": "^1.1"
+	},
+	"config": {
+		"allow-plugins": {
+			"getkirby/composer-installer": true
+		}
+	}
+}

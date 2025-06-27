@@ -2,7 +2,6 @@ type: pages
 label:
   de: Reisen
   en: Journeys
-parent: site.index.findBy('template', 'journey-journal-journeys').first
 template: journey-journal-journey
 layout: cards
 image:

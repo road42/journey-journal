@@ -1,4 +1,6 @@
-title: Reisetag
+title:
+  de: Reisetag
+  en: Journey Day
 
 changeSlug: true
 changeTitle: true
@@ -58,7 +60,7 @@ columns:
         layout: list
         multiple: true
         info: "{{ file.filename }}"
-        query: page.images.filterBy('template', 'journeygalleryimage')
+        query: page.images.filterBy('template', 'journey-gallery-image')
   sidebar:
     width: 1/3
     sections:

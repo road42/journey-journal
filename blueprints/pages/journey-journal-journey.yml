@@ -112,20 +112,20 @@ columns:
         layout: list
         info: "{{ page.date }} - {{ page.SectionName }}"
         image:
-          query: page.template('journey-cover').first
+          query: page.coverImage
           cover: true
         sortBy: date asc status asc
         sortable: false
 
-  journey-sections:
+  journeysections:
 
     width: 1/3
     sections:
 
-      journey-sections:
+      journeysections:
         type: fields
         fields:
-          journey-sections:
+          journeysections:
             label: 
               de: Reiseabschnitte
               en: Journey Sections

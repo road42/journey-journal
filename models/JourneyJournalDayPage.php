@@ -80,6 +80,16 @@ class JourneyJournalDayPage extends Page
     public function coverImage()
     {
         return $this->images()->filterBy('template', 'journey-cover')->first();
+
+        //images()->filterBy('template', 'journey-gallery-image')
+    }
+
+    /**
+     * Returns all gallery images associated with the journey page.
+     */
+    public function galleryImages()
+    {
+        return $this->images()->filterBy('template', 'journey-gallery-image');
     }
 }
 

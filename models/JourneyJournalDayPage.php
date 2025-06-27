@@ -72,6 +72,15 @@ class JourneyJournalDayPage extends Page
       return $dates;
     }
 
+    /**
+     * Returns the cover image associated with the journey page.
+     *
+     * @return image The cover image object or null if not set.
+     */
+    public function coverImage()
+    {
+        return $this->images()->filterBy('template', 'journey-cover')->first();
+    }
 }
 
 ?>

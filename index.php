@@ -33,7 +33,7 @@ Kirby::plugin('road42/journey-journal', [
     'pageModels' => [
         'journey-journal-journeys' => JourneyJournalJourneysPage::class,
         'journey-journal-journey' => JourneyJournalJourneyPage::class,
-        'journey-journal-journeyday' => JourneyJournalDayPage::class
+        'journey-journal-day' => JourneyJournalDayPage::class
     ]
 
 ]);

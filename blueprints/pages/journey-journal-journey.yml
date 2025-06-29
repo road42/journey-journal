@@ -97,7 +97,7 @@ columns:
             type: users
             store: id
             multiple: true
-            query: kirby.users.filterBy('role', 'journey-journal-visitors')
+            query: kirby.users.filterBy('role', 'journey-journal-visitor')
 
   journey-days:
     width: 2/3

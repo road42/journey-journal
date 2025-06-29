@@ -108,8 +108,8 @@ columns:
                 type: select
                 options:
                   type: query
-                  query: site.locationicons.toStructure
-                  text: "{{ item.name }} ({{item.icon}})"
+                  query: site.placeicons.toStructure
+                  text: "{{ item.label }} ({{item.icon}})"
                   value: "{{ item.icon }}"
               location:
                 label: Street

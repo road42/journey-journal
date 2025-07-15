@@ -81,8 +81,8 @@ class JourneyJournalJourneyPage extends Page
         // the structure has two fields: user (user id) and commentpermission (no,ro,rw)
         $journeypermissions = $this->JourneyPermissions()->toStructure();
 
-        // return if admin
-        if ($user->isAdmin()) {
+        // return if admin or editor
+        if ($user->isAdmin() || $user->role() === 'journey-journal-editors') {
             return true;
         }
 
@@ -110,8 +110,8 @@ class JourneyJournalJourneyPage extends Page
 
         $journeypermissions = $this->JourneyPermissions()->toStructure();
 
-        // Admins have read-write permission
-        if ($user->isAdmin()) {
+        // Admins and Editors have read-write permission
+        if ($user->isAdmin() || $user->role() === 'journey-journal-editors') {
             return true;
         }
 
@@ -138,8 +138,8 @@ class JourneyJournalJourneyPage extends Page
 
         $journeypermissions = $this->JourneyPermissions()->toStructure();
 
-        // Admins can always read comments
-        if ($user->isAdmin()) {
+        // Admins and Editors can always read comments
+        if ($user->isAdmin() || $user->role() === 'journey-journal-editors') {
             return true;
         }
 

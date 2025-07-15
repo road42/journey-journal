@@ -1,0 +1,57 @@
+title:
+  de: Reisejournal-Editoren
+  en: Journey Journal Editors
+permissions:
+  access:
+    account: true
+    languages: false
+    panel: true
+    site: true
+    system: false
+    users: false
+  user:
+    changeEmail: true
+    changeLanguage: true
+    changeName: true
+    changePassword: true
+    changeRole: false
+    delete: false
+    update: true
+  files:
+    access: true
+    changeName: true
+    changeTemplate: true
+    create: true
+    delete: true
+    list: true
+    read: true
+    replace: true
+    sort: true
+    update: true
+  pages:
+    access: true
+    changeSlug: true
+    changeStatus: true
+    changeTemplate: true
+    changeTitle: true
+    create: true
+    delete: true
+    duplicate: true
+    list: true
+    move: true
+    preview: true
+    read: true
+    sort: true
+    update: true
+
+columns:
+  left:
+    width: 1/2
+    fields:
+      city:
+        label: Stadt
+        type: text
+      country:
+        label: Land
+        type: text
+

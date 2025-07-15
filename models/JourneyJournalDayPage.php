@@ -91,6 +91,24 @@ class JourneyJournalDayPage extends Page
     {
         return $this->images()->filterBy('template', 'journey-gallery-image');
     }
+
+    /**
+     * Returns if the user has permission to comment on the page.
+     */
+    public function userCanComment(): bool
+    {
+        $currentUser = kirby()->user();
+        return $currentUser && ($currentUser->isAdmin() || $currentUser->writeComments() == "rw");
+    }
+
+    /**
+     * Return if the user can read comments on the page.
+     */
+    public function userCanReadComments(): bool
+    {
+        $currentUser = kirby()->user();
+        return $currentUser && ($currentUser->isAdmin() || $currentUser->writeComments() == "ro");
+    }
 }
 
 ?>

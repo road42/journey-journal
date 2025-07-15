@@ -78,7 +78,79 @@ class JourneyJournalJourneyPage extends Page
      */
     public function userHasPermission($user)
     {
-        return $user->isAdmin() || $this->users()->toUsers()->has($user);
+        // the structure has two fields: user (user id) and commentpermission (no,ro,rw)
+        $journeypermissions = $this->JourneyPermissions()->toStructure();
+
+        // return if admin
+        if ($user->isAdmin()) {
+            return true;
+        }
+
+        // find the current user in the permissions structure
+        foreach ($journeypermissions as $permission) {
+            if ($permission->user() == $user->id()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Returns true if the current user can comment ('rw'), false otherwise.
+     *
+     * @return bool
+     */
+    public function userCanComment(): bool
+    {
+        $user = kirby()->user();
+        if (!$user) {
+            return false;
+        }
+
+        $journeypermissions = $this->JourneyPermissions()->toStructure();
+
+        // Admins have read-write permission
+        if ($user->isAdmin()) {
+            return true;
+        }
+
+        foreach ($journeypermissions as $permission) {
+            if ($permission->user() == $user->id()) {
+                return $permission->commentpermission()->value() == 'rw';
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Returns true if the current user can read comments ('ro' or 'rw'), false otherwise.
+     *
+     * @return bool
+     */
+    public function userCanReadComments(): bool
+    {
+        $user = kirby()->user();
+        if (!$user) {
+            return false;
+        }
+
+        $journeypermissions = $this->JourneyPermissions()->toStructure();
+
+        // Admins can always read comments
+        if ($user->isAdmin()) {
+            return true;
+        }
+
+        foreach ($journeypermissions as $permission) {
+            if ($permission->user() == $user->id()) {
+                $value = $permission->commentpermission()->value();
+                return $value == 'ro' || $value == 'rw';
+            }
+        }
+
+        return false;
     }
 }
 

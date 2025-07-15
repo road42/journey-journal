@@ -1,4 +1,4 @@
-title: 
+title:
   de: Reise
   en: Journey
 
@@ -14,7 +14,7 @@ create:
     - endDate
 
 status:
-  draft: 
+  draft:
     de: Entwurf
     en: Draft
   listed:
@@ -30,13 +30,13 @@ columns:
         type: fields
         fields:
           title:
-            label: 
+            label:
               de: Titel
               en: Title
             type: text
             required: true
           startDate:
-            label: 
+            label:
               de: Startdatum
               en: Start Date
             type: date
@@ -82,22 +82,10 @@ columns:
         type: fields
         fields:
           location:
-            label: 
+            label:
               de: Reiseort
               en: Travel Destination
             type: locator
-
-      permissions:
-         type: fields
-         fields:
-          users:
-            label: 
-              de: Lesebenutzer
-              en: Read Users
-            type: users
-            store: id
-            multiple: true
-            query: kirby.users.filterBy('role', 'journey-journal-visitor')
 
   journey-days:
     width: 2/3
@@ -126,7 +114,7 @@ columns:
         type: fields
         fields:
           journeysections:
-            label: 
+            label:
               de: Reiseabschnitte
               en: Journey Sections
             type: structure
@@ -139,6 +127,56 @@ columns:
                 required: true
               color:
                 type: colors
-                label: 
+                label:
                   de: Farben
                   en: Colors
+
+  journeypermissions:
+    width: 2/3
+    sections:
+      permissions:
+        type: fields
+        fields:
+          journeypermissions:
+            label:
+              de: Benutzerrechte
+              en: User Rights
+            type: structure
+            columns:
+              user: true
+              commentPermission: true
+            duplicate: false
+            fields:
+              user:
+                label:
+                  de: Benutzer
+                  en: User
+                type: select
+                required: true
+                options:
+                  type: query
+                  query: kirby.users.filterBy("role", "journey-journal-visitor").sortBy("name", "desc")
+                  value: "{{ user.id }}"
+              commentPermission:
+                label:
+                  de: Kommentarberechtigung
+                  en: Comment Permission
+                type: select
+                required: true
+                default: no
+                options:
+                  - value: no
+                    text:
+                      de: Nein
+                      en: No
+                    icon: cancel-small
+                  - value: ro
+                    text:
+                      de: Nur Lesen
+                      en: Read Only
+                    icon: text
+                  - value: rw
+                    text:
+                      de: Lesen und Schreiben
+                      en: Read and Write
+                    icon: edit

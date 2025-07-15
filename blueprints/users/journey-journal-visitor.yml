@@ -32,28 +32,3 @@ columns:
           de: Land
           en: Country
         type: text
-  right:
-    width: 1/2
-    fields:
-      writeComments:
-        label:
-          de: Kommentieren erlaubt
-          en: Allow Comment
-        type: toggles
-        options:
-          - value: no
-            text:
-              de: Nein
-              en: No
-            icon: cancel-small
-          - value: ro
-            text:
-              de: Nur Lesen
-              en: Read Only
-            icon: text
-          - value: rw
-            text:
-              de: Lesen und Schreiben
-              en: Read and Write
-            icon: edit
-        default: no

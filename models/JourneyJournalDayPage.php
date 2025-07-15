@@ -97,8 +97,7 @@ class JourneyJournalDayPage extends Page
      */
     public function userCanComment(): bool
     {
-        $currentUser = kirby()->user();
-        return $currentUser && ($currentUser->isAdmin() || $currentUser->writeComments() == "rw");
+        return $this->parent()->userCanComment();
     }
 
     /**
@@ -106,8 +105,7 @@ class JourneyJournalDayPage extends Page
      */
     public function userCanReadComments(): bool
     {
-        $currentUser = kirby()->user();
-        return $currentUser && ($currentUser->isAdmin() || $currentUser->writeComments() == "ro");
+        return $this->parent()->userCanReadComments();
     }
 }
 

@@ -29,7 +29,7 @@ Kirby::plugin('road42/journey-journal', [
         'pages/journey-journal-day' => __DIR__ . '/blueprints/pages/journey-journal-day.yml',
         'sections/journey-list' => __DIR__ . '/blueprints/sections/journey-list.yml',
         'sections/journey-day-list' => __DIR__ . '/blueprints/sections/journey-day-list.yml',
-        'users/journey-journal-editors' => __DIR__ . '/blueprints/users/journey-journal-editors.yml',
+        'users/journey-journal-editor' => __DIR__ . '/blueprints/users/journey-journal-editor.yml',
         'users/journey-journal-visitor' => __DIR__ . '/blueprints/users/journey-journal-visitor.yml',
     ],
     'controllers' => [

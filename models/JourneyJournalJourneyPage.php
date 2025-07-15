@@ -82,7 +82,7 @@ class JourneyJournalJourneyPage extends Page
         $journeypermissions = $this->JourneyPermissions()->toStructure();
 
         // return if admin or editor
-        if ($user->isAdmin() || $user->role() == 'journey-journal-editors') {
+        if ($user->isAdmin() || $user->role() == 'journey-journal-editor') {
             return true;
         }
 
@@ -110,8 +110,8 @@ class JourneyJournalJourneyPage extends Page
 
         $journeypermissions = $this->JourneyPermissions()->toStructure();
 
-        // Admins and Editors have read-write permission
-        if ($user->isAdmin() || $user->role() == 'journey-journal-editors') {
+        // Admins and Editor have read-write permission
+        if ($user->isAdmin() || $user->role() == 'journey-journal-editor') {
             return true;
         }
 
@@ -138,8 +138,8 @@ class JourneyJournalJourneyPage extends Page
 
         $journeypermissions = $this->JourneyPermissions()->toStructure();
 
-        // Admins and Editors can always read comments
-        if ($user->isAdmin() || $user->role() == 'journey-journal-editors') {
+        // Admins and Editor can always read comments
+        if ($user->isAdmin() || $user->role() == 'journey-journal-editor') {
             return true;
         }
 

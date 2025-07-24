@@ -24,36 +24,57 @@ class JourneyJournalDayPage extends Page
      */
     public function SectionName(): string
     {
-      $selectedId = $this->section()->value();
-      $sections = $this->Sections();
+        $selectedId = $this->section()->value();
+        $sections = $this->Sections();
 
-      foreach ($sections as $section) {
-          if ($section->id() == $selectedId) {
-          return $section->title()->value();
-          }
-      }
+        foreach ($sections as $section) {
+            if ($section->id() == $selectedId) {
+                return $section->title()->value();
+            }
+        }
 
-      return "";
+        return "";
     }
 
     // Reads the GPS file, parses each line as a pair of coordinates, and returns an array of routes.
     public function FormattedRoute(): array
     {
-      $route = [];
-      $gpsFile = $this->gpsfile()->toFile();
+        $route = [];
+        $gpsFile = $this->gpsfile()->toFile();
 
-      if ($gpsFile && $gpsFile->exists()) {
-        $content = $gpsFile->read();
-        $lines = explode("\n", $content);
-        foreach ($lines as $line) {
-          $coordinates = array_map('trim', explode(',', $line));
-          if (count($coordinates) === 2) {
-          $route[] = $coordinates;
-          }
+        if ($gpsFile && $gpsFile->exists()) {
+            if ($gpsFile->extension() === 'csv') {
+                $content = $gpsFile->read();
+                $lines = explode("\n", $content);
+                foreach ($lines as $line) {
+                    $coordinates = array_map('trim', explode(',', $line));
+                    if (count($coordinates) === 2) {
+                        $route[] = $coordinates;
+                    }
+                }
+            }
+            // Support for GPX (XML) files
+            elseif ($gpsFile->extension() === 'gpx') {
+                $content = $gpsFile->read();
+                $xml = simplexml_load_string($content);
+                if ($xml !== false) {
+                    // GPX files usually have trk > trkseg > trkpt elements
+                    foreach ($xml->trk as $trk) {
+                        foreach ($trk->trkseg as $trkseg) {
+                            foreach ($trkseg->trkpt as $trkpt) {
+                                $lat = (string)$trkpt['lat'];
+                                $lon = (string)$trkpt['lon'];
+                                if ($lat !== '' && $lon !== '') {
+                                    $route[] = [$lat, $lon];
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
-      }
 
-      return $route;
+        return $route;
     }
 
     /**
@@ -63,13 +84,13 @@ class JourneyJournalDayPage extends Page
      */
     public function Dates()
     {
-      $dates = $this->parent()->unusedDaysInJourney();
-      $currentDate = $this->date()->toDate('Y-m-d');
-      if ($currentDate) {
-        $dates[] = $currentDate;
-        sort($dates);
-      }
-      return $dates;
+        $dates = $this->parent()->unusedDaysInJourney();
+        $currentDate = $this->date()->toDate('Y-m-d');
+        if ($currentDate) {
+            $dates[] = $currentDate;
+            sort($dates);
+        }
+        return $dates;
     }
 
     /**
@@ -108,5 +129,3 @@ class JourneyJournalDayPage extends Page
         return $this->parent()->userCanReadComments();
     }
 }
-
-?>

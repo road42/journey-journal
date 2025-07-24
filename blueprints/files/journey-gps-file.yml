@@ -1,4 +1,6 @@
-title: 
+title:
   de: Reise GPS-Track
   en: Journey GPS Track
-accept: true
+
+accept:
+  extension: gpx, csv

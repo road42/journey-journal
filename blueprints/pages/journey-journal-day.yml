@@ -125,8 +125,9 @@ columns:
           gpsfile:
             label: GPS-Datei
             type: files
-            template: journey-gps-file
             info: "{{ file.filename }}"
+            uploads: journey-gps-file
+            query: page.files.filterBy('template', 'journey-gps-file')
             image: false
             multiple: false
             min: 0
@@ -137,4 +138,3 @@ columns:
     sections:
       komments:
         extends: sections/komments
-

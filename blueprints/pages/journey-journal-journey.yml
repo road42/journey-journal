@@ -86,6 +86,46 @@ columns:
               de: Reiseort
               en: Travel Destination
             type: locator
+          locations:
+            label: Besuchte Orte
+            type: structure
+            columns:
+              title:
+                width: 1/4
+                align: left
+                mobile: true
+              location:
+                width: 2/4
+                align: left
+                mobile: true
+              type:
+                width: 1/4
+                align: left
+                mobile: true
+            fields:
+              title:
+                label: Ort
+                type: text
+                required: true
+              icon:
+                label: Icon
+                type: select
+                options:
+                  type: query
+                  query: site.placeicons.toStructure
+                  text: "{{ item.label }} ({{item.icon}})"
+                  value: "{{ item.icon }}"
+              location:
+                label: Street
+                type: locator
+                liststyle: table
+                marker: dark
+                language: 'de'
+                tiles: openstreetmap
+              description:
+                label: Beschreibung
+                type: textarea
+                size: small
 
   journey-days:
     width: 2/3

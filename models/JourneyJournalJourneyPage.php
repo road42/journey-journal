@@ -152,6 +152,23 @@ class JourneyJournalJourneyPage extends Page
 
         return false;
     }
+    /**
+     * Collects the formatted routes from every published subpage (JourneyJournalDayPage)
+     * and returns a complete route for all days as a single merged array.
+     *
+     * @return array A complete route for all published day subpages.
+     */
+    public function allRoutes(): array
+    {
+        $completeRoute = [];
+        foreach ($this->children()->listed() as $dayPage) {
+            $route = $dayPage->FormattedRoute();
+            if (is_array($route)) {
+                $completeRoute = array_merge($completeRoute, $route);
+            }
+        }
+        return $completeRoute;
+    }
 }
 
 ?>

@@ -57,10 +57,11 @@ columns:
         type: files
         label: Galerie
         template: journey-gallery-image
-        layout: list
+        layout: cards
         multiple: true
         info: "{{ file.filename }}"
-        query: page.images.filterBy('template', 'journey-gallery-image')
+        sortable: true
+        limit: 100
   sidebar:
     width: 1/3
     sections:

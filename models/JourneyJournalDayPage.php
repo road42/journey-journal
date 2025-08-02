@@ -110,7 +110,7 @@ class JourneyJournalDayPage extends Page
      */
     public function galleryImages()
     {
-        return $this->images()->filterBy('template', 'journey-gallery-image');
+        return $this->images()->filterBy('template', 'journey-gallery-image')->sortBy('sort', 'asc');
     }
 
     /**

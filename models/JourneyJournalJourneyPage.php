@@ -158,11 +158,11 @@ class JourneyJournalJourneyPage extends Page
      *
      * @return array A complete route for all published day subpages.
      */
-    public function allRoutes(): array
+    public function allParsedRoutes(): array
     {
         $completeRoute = [];
         foreach ($this->children()->listed() as $dayPage) {
-            $route = $dayPage->FormattedRoute();
+            $route = $dayPage->parsedRoutes();
             if (is_array($route)) {
                 $completeRoute = array_merge($completeRoute, $route);
             }

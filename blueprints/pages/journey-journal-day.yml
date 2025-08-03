@@ -130,9 +130,9 @@ columns:
             uploads: journey-gps-file
             query: page.files.filterBy('template', 'journey-gps-file')
             image: false
-            multiple: false
+            multiple: true
             min: 0
-            max: 1
+            max: 10
 
   comments:
     width: 1/1

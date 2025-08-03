@@ -37,12 +37,15 @@ class JourneyJournalDayPage extends Page
     }
 
     // Reads the GPS file, parses each line as a pair of coordinates, and returns an array of routes.
-    public function FormattedRoute(): array
+    public function parsedRoutes(): array
     {
-        $route = [];
-        $gpsFile = $this->gpsfile()->toFile();
+        $routes = [];
+        $gpsFiles = $this->gpsfile()->toFiles();
 
-        if ($gpsFile && $gpsFile->exists()) {
+        foreach ($gpsFiles as $gpsFile) {
+            $route = [];
+
+            // simple csv files
             if ($gpsFile->extension() === 'csv') {
                 $content = $gpsFile->read();
                 $lines = explode("\n", $content);
@@ -53,6 +56,7 @@ class JourneyJournalDayPage extends Page
                     }
                 }
             }
+
             // Support for GPX (XML) files
             elseif ($gpsFile->extension() === 'gpx') {
                 $content = $gpsFile->read();
@@ -72,9 +76,13 @@ class JourneyJournalDayPage extends Page
                     }
                 }
             }
+
+            if (!empty($route)) {
+                $routes[$gpsFile->hash()] = $route;
+            }
         }
 
-        return $route;
+        return $routes;
     }
 
     /**

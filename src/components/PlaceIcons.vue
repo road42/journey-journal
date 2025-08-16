@@ -10,7 +10,7 @@
           <k-button @click="remove(i)" icon="trash" theme="negative" size="xs" />
         </li>
       </ul>
-      <k-button @click="add" icon="add">New Icon</k-button>
+      <k-button @click="add" icon="add">Add Icon</k-button>
       <k-button @click="save" icon="check" theme="positive">Save</k-button>
     </k-view>
   </k-panel-inside>

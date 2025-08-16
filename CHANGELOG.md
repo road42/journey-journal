@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/road42/journey-journal/compare/v1.0.0...v1.0.1) (2025-08-16)
+
+
+### Bug Fixes
+
+* **release:** remove yarn.lock from release ([be3637d](https://github.com/road42/journey-journal/commit/be3637d2c4f9a6108cc8d771d40a0545650f890f))
+
 # 1.0.0 (2025-08-16)
 
 

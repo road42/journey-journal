@@ -1,5 +1,5 @@
 <template>
-  <k-inside>
+  <k-panel-inside>
     <k-view class="jj-place-icons">
       <k-header>Place icons</k-header>
       <ul>
@@ -13,7 +13,7 @@
       <k-button @click="add" icon="add">New Icon</k-button>
       <k-button @click="save" icon="check" theme="positive">Save</k-button>
     </k-view>
-  </k-inside>
+  </k-panel-inside>
 </template>
 
 <script>

@@ -21,6 +21,7 @@
 # Development files
 composer.lock export-ignore
 package.json export-ignore
+yarn.lock export-ignore
 
 # Source
 src/ export-ignore

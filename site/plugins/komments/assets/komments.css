@@ -1,0 +1,118 @@
+#kommentform {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-areas:
+        'message message message'
+        'replyHandleDisplay empty empty'
+        'comment comment comment'
+        'email author authorsite'
+        'privacy privacy button';
+
+    grid-gap: 1em;
+
+    .form-feedback {
+        grid-area: message;
+    }
+
+    .replyHandleDisplay {
+        grid-area: replyHandleDisplay;
+    }
+
+    label[for='comment'] {
+        grid-area: comment;
+
+        textarea {
+            width: 100%;
+        }
+    }
+
+    label[for='email'] {
+        grid-area: email;
+    }
+
+    label[for='author'] {
+        grid-area: author;
+    }
+
+    label[for='author_url'] {
+        grid-area: authorsite;
+    }
+
+    .komment-privacy {
+        grid-area: privacy;
+        font-size: smaller;
+    }
+
+    input[type='submit'] {
+        grid-area: button;
+    }
+
+    #url {
+        position: relative;
+        left: -200vw;
+        height: 0;
+    }
+
+    .msg {
+        border: 1px solid #ccc;
+        padding: 1em;
+        background-color: #f9f9f9;
+        opacity: 0;
+        display: none;
+
+        &.visible {
+            display: block;
+            animation: kmsg-fade 1s linear forwards;
+            animation-delay: 0.5s;
+        }
+
+        &.msg-success {
+            border-color: green;
+            background-color: #e9f9e9;
+        }
+
+        &.msg-error {
+            border-color: red;
+            background-color: #f9e9e9;
+        }
+
+        &.msg-info {
+            border-color: blue;
+            background-color: #e9e9f9;
+        }
+    }
+
+    .loader {
+        display: none;
+        animation: none;
+
+        svg {
+            width: 30px;
+            height: 30px;
+            animation: kspin infinite 1s linear forwards;
+        }
+
+        &.visible {
+            display: flex;
+            align-items: center;
+        }
+    }
+}
+
+@keyframes kspin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes kmsg-fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

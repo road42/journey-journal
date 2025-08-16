@@ -1,0 +1,52 @@
+{
+    "name": "mauricerenck/komments",
+    "version": "3.4.0",
+    "description": "A comment and webmention plugin for Kirby 3",
+    "homepage": "https://github.com/mauricerenck/komments",
+    "type": "kirby-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Maurice Renck",
+            "email": "hello@maurice-renck.de"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "mauricerenck\\Komments\\": "lib/"
+        },
+        "classmap": [
+            "lib"
+        ]
+    },
+    "require-dev": {
+        "getkirby/cms": "^4",
+        "phpunit/phpunit": "^9.5.",
+        "mockery/mockery": "^1.6"
+    },
+    "require": {
+        "getkirby/composer-installer": "^1.2",
+        "indieweb/mention-client": "^1.2",
+        "php": ">=8.0.0",
+        "ext-json": "*"
+    },
+    "suggests": {
+        "mauricerenck/indieconnector": "1.8"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "allow-plugins": {
+            "getkirby/composer-installer": true
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit --testdox --colors=always",
+        "build-test-package": "git archive HEAD -o komments.zip --worktree-attributes",
+        "build-composer": "composer install --no-dev --optimize-autoloader",
+        "build-release": [
+            "composer test tests",
+            "composer install --no-dev --optimize-autoloader",
+            "npm run build"
+        ]
+    }
+}

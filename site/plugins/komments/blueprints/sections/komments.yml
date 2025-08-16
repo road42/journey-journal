@@ -1,0 +1,14 @@
+label: Komments
+type: fields
+fields:
+    kommentsEnabledOnpage:
+        type: toggle
+        label: Komments enabled
+        default: true
+        text:
+            - Disabled
+            - Enabled
+        width: 1/3
+    kommentsInbox:
+        type: CommentsTable
+        label: Inbox

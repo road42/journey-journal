@@ -13,8 +13,8 @@
     "recognizeSelfClosing": true
   },
   "dependencies": {
-      "semver": "^7.7.1",
-      "vue": "^2.6.11",
+      "semver": "^7.7.2",
+      "vue": "^2.6.14",
       "vue-hot-reload-api": "^2.3.4"
   },
   "devDependencies": {
@@ -22,8 +22,9 @@
       "@semantic-release/changelog": "^6.0.3",
       "@semantic-release/git": "^10.0.1",
       "@vue/component-compiler-utils": "^3.1.2",
-      "cssnano": "^4.1.10",
-      "stylus": "^0.54.7",
-      "vue-template-compiler": "^2.6.11"
+      "cssnano": "^5.0.6",
+      "postcss": "^8.3.5",
+      "sass": "^1.43.4",
+      "vue-template-compiler": "^2.6.14"
   }
 }

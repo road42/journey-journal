@@ -2,7 +2,18 @@
 .DS_Store
 
 # npm modules
+index.dev.mjs
 /node_modules
 
-# Composer files
 /vendor
+/.cache
+/node_modules
+/site/sessions
+/site/accounts
+/media
+/site/sessions
+/site/accounts
+/kirby
+/site/cache
+/~
+/journeyjournal.zip

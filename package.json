@@ -1,6 +1,29 @@
 {
+  "name": "journey-journal",
+  "version": "0.0.1",
+	"description": "Kirby plugin dedicated to sharing journeys.",
+  "main": "index.js",
+  "author": "Christoph Jahn",
+  "private": true,
   "scripts": {
     "dev": "npx -y kirbyup src/index.js --watch",
     "build": "npx -y kirbyup src/index.js"
+  },
+  "posthtml": {
+    "recognizeSelfClosing": true
+  },
+  "dependencies": {
+      "semver": "^7.7.1",
+      "vue": "^2.6.11",
+      "vue-hot-reload-api": "^2.3.4"
+  },
+  "devDependencies": {
+      "@ambimax/semantic-release-composer": "github:ambimax/semantic-release-composer",
+      "@semantic-release/changelog": "^6.0.3",
+      "@semantic-release/git": "^10.0.1",
+      "@vue/component-compiler-utils": "^3.1.2",
+      "cssnano": "^4.1.10",
+      "stylus": "^0.54.7",
+      "vue-template-compiler": "^2.6.11"
   }
 }

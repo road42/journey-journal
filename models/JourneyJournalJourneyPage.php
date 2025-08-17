@@ -158,16 +158,58 @@ class JourneyJournalJourneyPage extends Page
      *
      * @return array A complete route for all published day subpages.
      */
-    public function allParsedRoutes(): array
+    public function journeyRoutes(): array
     {
         $completeRoute = [];
         foreach ($this->children()->listed() as $dayPage) {
-            $route = $dayPage->parsedRoutes();
+            $route = $dayPage->dayRoutes();
             if (is_array($route)) {
                 $completeRoute = array_merge($completeRoute, $route);
             }
         }
         return $completeRoute;
+    }
+
+    /**
+    * Returns the geometric middle point (min + (max minus min) / 2) of the whole route
+    * (journeyRoutes) so that the journey map is automatically centered around this point.
+    * Gets the smallest and the biggest latitude and longitude from all parsed routes and
+    * calculates the middle point.
+    *
+    * It also returns the range of the route (min/max latitude and longitude) for zooming
+    *
+    * @return array|null [float, float, float] or null if no points exist
+    */
+    public function journeyMiddlePointCoordinates(): ?array
+    {
+        $routes = $this->journeyRoutes();
+        if (empty($routes)) {
+            return null;
+        }
+
+        $minLat = $maxLat = $minLng = $maxLng = null;
+
+        foreach ($routes as $day) {
+            foreach ($day as $point) {
+                $lat = $point[0];
+                $lng = $point[1];
+
+                if ($minLat === null || $lat < $minLat) $minLat = $lat;
+                if ($maxLat === null || $lat > $maxLat) $maxLat = $lat;
+                if ($minLng === null || $lng < $minLng) $minLng = $lng;
+                if ($maxLng === null || $lng > $maxLng) $maxLng = $lng;
+            }
+        }
+
+        if ($minLat === null || $maxLat === null || $minLng === null || $maxLng === null) {
+            return null;
+        }
+
+        return [
+            $minLat + ($maxLat - $minLat) / 2,
+            $minLng + ($maxLng - $minLng) / 2,
+            max($maxLat - $minLat, $maxLng - $minLng)
+        ];
     }
 }
 
